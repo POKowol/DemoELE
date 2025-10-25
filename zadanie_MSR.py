@@ -38,7 +38,22 @@ entry_lf.configure(textvariable=lf_var)  # Link the entry to lf_var
 ttk.Label(root, text="m").grid(column=2, row=1,
                                padx=10, pady=10, sticky='W')  # Unit label
 
+
+def oblicz_window(parent):
+    try:
+        Sf_value = float(Sf_var.get())
+        top = tk.Toplevel(parent)
+        top.title("Wynik obliczeń")
+        top.geometry("300x150")
+        ttk.Label(top, text=f"Wartość Sf wynosi: {Sf_value} m²").pack(
+            padx=10, pady=10)
+        ttk.Button(top, text="Zamknij", command=top.destroy).pack(pady=10)
+    except ValueError:
+        print("Proszę wprowadzić poprawną wartość liczbową dla Sf.")
+
+
 button_calculate = ttk.Button(root, text="Oblicz")  # Create a button widget
 button_calculate.grid(column=0, row=2, padx=10, pady=20, columnspan=3)
-
+button_calculate.config(
+    command=lambda: oblicz_window(root))  # Set button command
 root.mainloop()  # Start the Tkinter event loop
