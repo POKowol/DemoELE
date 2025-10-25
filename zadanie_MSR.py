@@ -44,9 +44,18 @@ ttk.Label(root, text="m").grid(column=2, row=1,
                                padx=10, pady=10, sticky='W')  # Unit label
 
 
+def oblicz():
+    print(f"Wartość Sf wynosi: {Sf_var.get()} m²")
+    # try:
+    #     Sf_value = float(Sf_var.get())
+    #     print(f"Wartość Sf wynosi: {Sf_value} m²")
+    # except ValueError:
+    #     print("Proszę wprowadzić poprawną wartość liczbową dla Sf.")
+
+
 def oblicz_window(parent):
     try:
-        Sf_value = float(Sf_var.get())
+        Sf_value = float(s)
         top = tk.Toplevel(parent)
         top.title("Wynik obliczeń")
         top.geometry("300x150")
@@ -62,4 +71,11 @@ button_calculate.grid(column=0, row=2, padx=10, pady=20, columnspan=3)
 button_calculate.config(
     command=lambda: oblicz_window(root))  # Set button command
 button_calculate.config(bootstyle="danger")
+
+# Create another button widget
+button_oblicz = ttk.Button(root, text="Oblicz - konsolla")
+button_oblicz.grid(column=0, row=3, padx=10, pady=10, columnspan=3)
+button_oblicz.config(command=oblicz)  # Set button command
+
+
 root.mainloop()  # Start the Tkinter event loop
