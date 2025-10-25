@@ -1,7 +1,12 @@
 import tkinter as tk  # Import the tkinter library for GUI development
-from tkinter import ttk  # Import the themed tkinter widgets
+# from tkinter import ttk  # Import the themed tkinter widgets
+from ttkbootstrap import ttk  # Import ttk from ttkbootstrap for enhanced styling
+from ttkbootstrap import Style
 
 root = tk.Tk()  # Create the main application window
+
+style = Style(theme="darkly")  # Apply a Bootstrap theme for better aesthetics
+
 root.title("Zadanie 7 z maszyn elektryczynch")  # Set the title of the window
 root.geometry("400x300")  # Set the size of the window
 root.resizable(False, False)  # Disable window resizing
@@ -56,4 +61,5 @@ button_calculate = ttk.Button(root, text="Oblicz")  # Create a button widget
 button_calculate.grid(column=0, row=2, padx=10, pady=20, columnspan=3)
 button_calculate.config(
     command=lambda: oblicz_window(root))  # Set button command
+button_calculate.config(bootstyle="danger")
 root.mainloop()  # Start the Tkinter event loop
